@@ -13,7 +13,7 @@ namespace Ultimatefightingleague
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         Fighter main;
-        List<Movement> test;
+        MoveSystem ms = new MoveSystem();
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -46,12 +46,8 @@ namespace Ultimatefightingleague
             Movement m = new Movement();
             
             main = new Fighter();
-            m.owner = main;
-            main.Components.Add(m);
-
-            //this would be in the system for moving
-            test = new List<Movement>();
-            test.Add(m);
+            ms.add(main);
+            
         }
 
         /// <summary>
@@ -73,13 +69,11 @@ namespace Ultimatefightingleague
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
-       
+
             // TODO: Add your update logic here
-            foreach (Movement item in test)
-            {
-                item.Update();
-                System.Diagnostics.Debug.WriteLine(item.x + "Is the x");
-            }
+
+            ms.update_mo();
+            
             
             base.Update(gameTime);
         }
