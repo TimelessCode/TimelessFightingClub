@@ -27,6 +27,13 @@ namespace Ultimatefightingleague.components
                 owner.mystate = Fighter.State.walking;
                 x -= 1;
             }
+
+            if (Keyboard.GetState().IsKeyDown(Keys.Z))
+            {
+
+                owner.mystate = Fighter.State.punching;
+                
+            }
         }
 
         public Fighter owner;

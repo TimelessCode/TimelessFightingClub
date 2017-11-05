@@ -28,7 +28,7 @@ namespace Ultimatefightingleague
             foreach (Movement item in movements)
             {
                 item.Update();
-                System.Diagnostics.Debug.WriteLine(item.x + "Is the x");
+               // System.Diagnostics.Debug.WriteLine(item.x + "Is the x");
             }
 
         }

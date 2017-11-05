@@ -14,6 +14,8 @@ namespace Ultimatefightingleague
         SpriteBatch spriteBatch;
         Fighter main;
         MoveSystem ms = new MoveSystem();
+        DamageSystem ds = new DamageSystem();
+        Fighter dummy;
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -47,7 +49,14 @@ namespace Ultimatefightingleague
             
             main = new Fighter();
             ms.add(main);
-            
+
+            dummy = new Fighter();
+            ms.add(dummy);
+
+            Movement fads = (Movement)dummy.getcomponent(typeof(Movement));
+            fads.x = -10;
+            ds.fighters.Add(dummy);
+            ds.fighters.Add(main);
         }
 
         /// <summary>
@@ -73,8 +82,17 @@ namespace Ultimatefightingleague
             // TODO: Add your update logic here
 
             ms.update_mo();
-            
-            
+
+            /*
+            if(main.mystate == Fighter.State.punching)
+            {
+                //insert code to see if other fighter is in range, if they are :
+               var damage_system.damage(other fighter, getpowerforstate(main.mystate));
+
+            }
+            */
+
+            ds.update();
             base.Update(gameTime);
         }
 
