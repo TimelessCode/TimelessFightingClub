@@ -18,15 +18,33 @@ namespace Ultimatefightingleague.components
             if (Keyboard.GetState().IsKeyDown(Keys.Right)) {
 
                 owner.mystate = Fighter.State.walking;
-                x += 1;
+                x += 10;
             }
 
             if (Keyboard.GetState().IsKeyDown(Keys.Left))
             {
 
                 owner.mystate = Fighter.State.walking;
-                x -= 1;
+                x -= 10;
             }
+
+
+            if (Keyboard.GetState().IsKeyDown(Keys.Up))
+            {
+
+                owner.mystate = Fighter.State.walking;
+                y -= 5;
+            }
+
+
+
+            if (Keyboard.GetState().IsKeyDown(Keys.Down))
+            {
+
+                owner.mystate = Fighter.State.walking;
+                 y += 5;
+            }
+
 
             if (Keyboard.GetState().IsKeyDown(Keys.Z))
             {

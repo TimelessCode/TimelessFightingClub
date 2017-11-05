@@ -21,7 +21,10 @@ namespace Ultimatefightingleague
         public int framenumber;
         public int offset;
         public int row;
+        public int rowamount;
         public Texture2D tex;
+        public int currentframe;
+     
        
     }
 }

@@ -44,6 +44,7 @@
   <ItemGroup>
     <Compile Include="Animation.cs" />
     <Compile Include="AnimationDrawSystem.cs" />
+    <Compile Include="components\animlinker.cs" />
     <Compile Include="components\Movement.cs" />
     <Compile Include="DamageSystem.cs" />
     <Compile Include="Fighter.cs" />

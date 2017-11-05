@@ -16,6 +16,8 @@ namespace Ultimatefightingleague
         MoveSystem ms = new MoveSystem();
         DamageSystem ds = new DamageSystem();
         Fighter dummy;
+
+        AnimationDrawSystem ads = new AnimationDrawSystem();
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -46,9 +48,21 @@ namespace Ultimatefightingleague
 
             // TODO: use this.Content to load your game content here
             Movement m = new Movement();
-            
+            animlinker al1 = new animlinker();
+            Animation test = new Animation();
+          
+            test.framenumber = 2;
+            test.framesize = new Vector2(90, 90);
+            test.offset = 0;
+            test.row = 1;
+            test.rowamount = 2;
+            test.tex = Content.Load<Texture2D>("Plankton_Pepe");
+            al1.links.Add(Fighter.State.walking, test);
+
             main = new Fighter();
             ms.add(main);
+            main.Components.Add(al1);
+
 
             dummy = new Fighter();
             ms.add(dummy);
@@ -91,6 +105,15 @@ namespace Ultimatefightingleague
 
             }
             */
+          animlinker temp = (animlinker)main.getcomponent(typeof(animlinker));
+            if (temp.links[Fighter.State.walking].currentframe < 2)
+            {
+                temp.links[Fighter.State.walking].currentframe += 1;
+            }
+            else
+            {
+                temp.links[Fighter.State.walking].currentframe = 0;
+            }
 
             ds.update();
             base.Update(gameTime);
@@ -105,7 +128,9 @@ namespace Ultimatefightingleague
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
             // TODO: Add your drawing code here
-
+            spriteBatch.Begin();
+            ads.drawfighter(spriteBatch, main);
+            spriteBatch.End();
             base.Draw(gameTime);
         }
     }
